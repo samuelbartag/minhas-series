@@ -3,18 +3,42 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "http-proxy-middleware": "^0.19.1",
+    "minhas-series-server": "git+https://github.com/samuelbartag/minhas-series-server.git",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-select": "^3.0.4",
+    "react-table": "^6.10.0",
+    "reactstrap": "^8.0.1",
+    "reactstrap-confirm": "^1.1.0",
+    "sqlite3": "^4.0.9"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all -p start-react start-server",
+    "start-server": "node ./node_modules/minhas-series-server/index.js",
+    "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "plugins": [
+      "react-hooks"
+    ],
+    "extends": "react-app",
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   },
   "browserslist": {
     "production": [
@@ -27,5 +51,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://0.0.0.0:3002/"
 }
